@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/FlappyPlane"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="/FlappyPlane/libs/gdx.jar" sourcepath="/FlappyPlane/libs/gdx-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Ethan/My Development/libGDX/libgdx-nightly-latest/extensions/gdx-controllers/gdx-controllers.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Ethan/My Development/libGDX/libgdx-nightly-latest/extensions/gdx-controllers/gdx-controllers-android.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Ethan/Downloads/odk-1.0.10 (1)/OUYA-ODK/libs/ouya-sdk.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
