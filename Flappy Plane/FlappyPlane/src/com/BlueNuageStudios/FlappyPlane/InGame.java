@@ -81,6 +81,7 @@ public class InGame {
 	public Float stateTime = 0f;
 	float w;
 	float h;
+	float origin;
 	List<Vector2> obstacles;
 	List<Rectangle> obstacleRects;
 	Rectangle characterRect;
@@ -124,7 +125,7 @@ public class InGame {
 	List<Integer> groundBlocks = new ArrayList<Integer>();
 	int numberOfGroundBlocks = 0;
 	
-	public boolean inMainMenu = true;
+	public boolean inMainMenu = false;
 	
 	int score = 0;
 	
@@ -132,10 +133,14 @@ public class InGame {
 	
 	int cameraSubtraction = 30;
 	
-	public void initialize()
+	public void initialize(float width, float height, float sentOrigin)
 	{
-		w = Gdx.graphics.getWidth();
-		h = Gdx.graphics.getHeight();
+		w = width;
+		h = height;
+		/*w = Gdx.graphics.getWidth();
+		h = Gdx.graphics.getHeight();*/
+		
+		origin = sentOrigin;
 		obstacles = new ArrayList<Vector2>();
 		obstacleRects = new ArrayList<Rectangle>();
 		obstacleRects.add(new Rectangle(0, 0 , w, 70));
@@ -293,24 +298,26 @@ public class InGame {
 	
 	public void render(SpriteBatch batch)
 	{
-		batch.draw(background, 0, 0, w, h);
+
+			
+		batch.draw(background, origin + 0, 0, w, h);
 		
 		
 		
 		for(int counter = 0; counter < obstacles.size(); counter++)
 		{
 			Vector2 currentObstacle = obstacles.get(counter);
-			if(currentObstacle.x - hackCamera > - 1000)
-				drawObstacle((int)currentObstacle.x, (int)currentObstacle.y, batch);
+			if(origin + currentObstacle.x - hackCamera > origin - 210)
+				drawObstacle((int)origin + (int)currentObstacle.x, (int)currentObstacle.y, batch);
 		}
 		
 		for(int currentGroundBlock : groundBlocks)
 		{
-			if(currentGroundBlock - hackCamera > - 1000)
-				batch.draw(dirt, (currentGroundBlock - hackCamera), 0);
+			if(currentGroundBlock - hackCamera > origin - dirt.getWidth())
+				batch.draw(dirt, origin + (currentGroundBlock - hackCamera), 0);
 		}
 		
-		batch.draw(characterRegion, characterLocation.x, characterLocation.y, characterRegion.getRegionWidth()/6, characterRegion.getRegionHeight()/6, characterRegion.getRegionWidth()/3, characterRegion.getRegionHeight()/3, 1, 1, characterRotation);
+		batch.draw(characterRegion, origin + characterLocation.x, characterLocation.y, characterRegion.getRegionWidth()/6, characterRegion.getRegionHeight()/6, characterRegion.getRegionWidth()/3, characterRegion.getRegionHeight()/3, 1, 1, characterRotation);
 
 		
 		

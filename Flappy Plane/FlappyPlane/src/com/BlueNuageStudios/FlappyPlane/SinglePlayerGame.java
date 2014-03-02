@@ -114,7 +114,7 @@ public class SinglePlayerGame {
 		
 		
 		inGame = new InGame();
-		inGame.initialize(); 
+		inGame.initialize(w, h, 0f); 
 	 }	 
 	 public void update()
 	 {

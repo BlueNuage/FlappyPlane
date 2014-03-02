@@ -29,12 +29,13 @@ import tv.ouya.console.api.*;
 import tv.ouya.*;
 
 public class MainClass implements ApplicationListener {
-	private OrthographicCamera camera;
+
 	private SpriteBatch batch;
 	OuyaFacade ouyaFacade;
 	Context context;
-	SinglePlayerGame singlePlayerGame;
-	int gameMode = 1;
+	SinglePlayerGame singlePlayerGame = new SinglePlayerGame();
+	VersusGame versusGame = new VersusGame();
+	int gameMode = 2;
 	float w;
 	float h;
 	
@@ -60,11 +61,11 @@ public class MainClass implements ApplicationListener {
 			OuyaController.showCursor(false);
 		}
 		
-		camera = new OrthographicCamera(1, h / w);
+
 		batch = new SpriteBatch();
 		
-		singlePlayerGame = new SinglePlayerGame();
 		singlePlayerGame.initialize(ouyaFacade);
+		versusGame.initialize();
 		
 		
 	}
@@ -80,6 +81,9 @@ public class MainClass implements ApplicationListener {
 		case 1:
 			singlePlayerGame.update();
 			break;
+			
+		case 2:
+			versusGame.update();
 		}
 	}
 
@@ -87,13 +91,18 @@ public class MainClass implements ApplicationListener {
 	public void render() {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
+        
+		
 		update();
 
 		batch.begin();
 		switch (gameMode) {
 		case 1:
 			singlePlayerGame.render(batch);
+			break;
+			
+		case 2:
+			versusGame.render();
 			break;
 		}
 		
